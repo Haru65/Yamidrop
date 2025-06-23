@@ -10,13 +10,15 @@ require('dotenv').config();
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://yamidrop-uzrq.vercel.app/'
+  'https://yamidrop-uzrq.vercel.app/',
+  "https://yamidrop-nm4l.vercel.app/"
 ];
 
 
 
 app.use(cors({
   origin: (origin, callback) => {
+    console.log('CORS origin:', origin); 
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
