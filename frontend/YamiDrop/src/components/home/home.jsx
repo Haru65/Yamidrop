@@ -30,7 +30,7 @@ const Home = () => {
     formData.append('file', files[0]);
     formData.append('username', username);
     formData.append('sshAddress', sshAddress);
-    
+    //These endpoints are for demo and open-source usage only. Please deploy your own instances if building in production.
     fetch('https://yamidrop.onrender.com/upload', {
       method: 'POST',
       headers: {

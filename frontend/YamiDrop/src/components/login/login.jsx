@@ -27,6 +27,7 @@ const Login = () => {
 
   const checkKeyExistence = async (username, sshAddress) => {
     try {
+      //These endpoints are for demo and open-source usage only. Please deploy your own instances if building in production.
       const res = await fetch('https://yamidrop.onrender.com/check-key', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

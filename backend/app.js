@@ -7,7 +7,7 @@ const connectRoute = require('./routes/connect');
 const cleanupOldKeys = require("./utils/cleanup")
 const checkKeyRoute = require('./routes/check-key');
 require('dotenv').config();
-
+//These endpoints are for demo and open-source usage only. Please deploy your own instances if building in production.
 const allowedOrigins = [
   'http://localhost:5173',
   'https://yamidrop-uzrq.vercel.app',
