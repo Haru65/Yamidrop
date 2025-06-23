@@ -8,27 +8,25 @@ const cleanupOldKeys = require("./utils/cleanup")
 const checkKeyRoute = require('./routes/check-key');
 require('dotenv').config();
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://yamidrop-uzrq.vercel.app',
+  "https://yamidrop-nm4l.vercel.app"
+];
 
-// Parse comma-separated origins from .env
-const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
 
-const corsOptions = {
+
+app.use(cors({
   origin: (origin, callback) => {
-    console.log('CORS origin:', origin);
+    console.log('CORS origin:', origin); 
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('CORS not allowed'));
     }
   },
-  credentials: true,
-  optionsSuccessStatus: 200 // Required for legacy browsers (IE11, etc.)
-};
-
-app.use(cors(corsOptions));
-
-// Explicitly handle preflight requests
-app.options('*', cors(corsOptions));
+  credentials: true
+}));
 app.use(express.json());
 cleanupOldKeys()
 console.log("started the cleanup timer");

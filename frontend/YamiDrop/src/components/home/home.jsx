@@ -31,7 +31,7 @@ const Home = () => {
     formData.append('username', username);
     formData.append('sshAddress', sshAddress);
     
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/upload`, {
+    fetch('https://yamidrop.onrender.com/upload', {
       method: 'POST',
       headers: {
     'Authorization': `Bearer ${token}`, // <-- IMPORTANT
@@ -70,7 +70,7 @@ const Home = () => {
     const sshAddress = localStorage.getItem('sshAddress');
 
     try {
-      await fetch(`${import.meta.env.VITE_BACKEND_URL}/disconnect`, {
+      await fetch('https://yamidrop.onrender.com/disconnect', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, sshAddress }),
