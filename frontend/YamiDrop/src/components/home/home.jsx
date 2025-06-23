@@ -70,7 +70,7 @@ const Home = () => {
     const sshAddress = localStorage.getItem('sshAddress');
 
     try {
-      await fetch('http://localhost:5000/disconnect', {
+      await fetch('http://localhost:5000/5000/disconnect', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, sshAddress }),
