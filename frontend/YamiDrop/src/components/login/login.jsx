@@ -27,7 +27,7 @@ const Login = () => {
 
   const checkKeyExistence = async (username, sshAddress) => {
     try {
-      const res = await fetch('http://localhost:5000/check-key', {
+      const res = await fetch('https://yamidrop.onrender.com/check-key', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, sshAddress }),
@@ -50,7 +50,7 @@ const Login = () => {
     if (pemFile) payload.append('pemKey', pemFile);
 
     try {
-      const res = await fetch('http://localhost:5000/connect', {
+      const res = await fetch('https://yamidrop.onrender.com/connect', {
         method: 'POST',
         body: payload,
       });
