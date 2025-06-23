@@ -8,20 +8,27 @@ const cleanupOldKeys = require("./utils/cleanup")
 const checkKeyRoute = require('./routes/check-key');
 require('dotenv').config();
 
+
+// Parse comma-separated origins from .env
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
 
-
-app.use(cors({
+const corsOptions = {
   origin: (origin, callback) => {
-    console.log('CORS origin:', origin); 
+    console.log('CORS origin:', origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('CORS not allowed'));
     }
   },
-  credentials: true
-}));
+  credentials: true,
+  optionsSuccessStatus: 200 // Required for legacy browsers (IE11, etc.)
+};
+
+app.use(cors(corsOptions));
+
+// Explicitly handle preflight requests
+app.options('*', cors(corsOptions));
 app.use(express.json());
 cleanupOldKeys()
 console.log("started the cleanup timer");
