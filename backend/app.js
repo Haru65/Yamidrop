@@ -10,8 +10,8 @@ require('dotenv').config();
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://yamidrop-uzrq.vercel.app/',
-  "https://yamidrop-nm4l.vercel.app/"
+  'https://yamidrop-uzrq.vercel.app',
+  "https://yamidrop-nm4l.vercel.app"
 ];
 
 
