@@ -8,12 +8,7 @@ const cleanupOldKeys = require("./utils/cleanup")
 const checkKeyRoute = require('./routes/check-key');
 require('dotenv').config();
 
-const allowedOrigins = [
-  'http://localhost:5173',
-  'https://yamidrop-uzrq.vercel.app',
-  "https://yamidrop-nm4l.vercel.app"
-];
-
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
 
 
 app.use(cors({
